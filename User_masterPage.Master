@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User_masterPage.master.cs" Inherits="QuanLySanPhamTHTKW.User_masterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            height: 633px;
+        }
+        .auto-style2 {
+            height: 80px;
+            text-align:center;
+        }
+        .auto-style3 {
+            height: 466px;
+        }
+        .auto-style4 {
+            height: 466px;
+            width: 280px;
+        }
+        .auto-style5 {
+            height: 466px;
+            width: 639px;
+        }
+        .auto-style6 {
+            width: 70%;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            Website bán điện thoại</div>&nbsp;<table class="auto-style1" style="border:1px solid black">
+            <tr>
+                <td class="auto-style2" colspan="3">
+                    <img alt="" class="auto-style6" src="image/BANNER.jfif" /></td>
+            </tr>
+            <tr>
+                <td class="auto-style4" style="vertical-align: top">
+                    <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                            <a href="DanhSachSanPham.aspx?MADANHMUC=<%# Eval("MADANHMUC") %>">
+                                <%# Eval("TENDANHMUC") %>
+                            </a>
+                            <br />
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </td>
+                <td class="auto-style5" style="vertical-align: top">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+                </td>
+                <td class="auto-style3" style="vertical-align: top"></td>
+            </tr>
+            <tr>
+                <td colspan="3">footer</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
