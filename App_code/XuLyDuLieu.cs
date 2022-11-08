@@ -95,8 +95,8 @@ namespace QuanLySanPhamTHTKW.App_code
             {
                 cmd.Parameters.AddRange(pr);
             }
-            DongKetNoi();
             int k = (int)cmd.ExecuteNonQuery();
+            DongKetNoi();
             return k;
         }
 

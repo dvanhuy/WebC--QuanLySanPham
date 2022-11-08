@@ -13,6 +13,7 @@ namespace QuanLySanPhamTHTKW
     {
 
         QuanLySanPhamTHTKW.App_code.XuLyDuLieu xulydulieu;
+        DataTable tbSanPham;
         protected void Page_Load(object sender, EventArgs e)
         {
             xulydulieu = new App_code.XuLyDuLieu();
@@ -23,7 +24,7 @@ namespace QuanLySanPhamTHTKW
             else
                 pr = new SqlParameter[] { new SqlParameter("@MaSanPham", DBNull.Value) };
 
-            DataTable tbSanPham = xulydulieu.getTable("psGetChiTietSanPham", pr);
+            tbSanPham = xulydulieu.getTable("psGetChiTietSanPham", pr);
             Repeater2.DataSource = tbSanPham;
             Repeater2.DataBind();
 
@@ -31,6 +32,25 @@ namespace QuanLySanPhamTHTKW
             for (int i = 0; i <= soluong; i++)
             {
                 this.DrlSOLUONG.Items.Add(i.ToString());
+            }
+        }
+
+        protected void btnGiohang_Click(object sender, EventArgs e)
+        {
+            Session.Timeout = 2;
+            App_code.Cart cart = new App_code.Cart();
+            if (tbSanPham != null)
+            {
+                String masanpham = tbSanPham.Rows[0]["MASANPHAM"].ToString();
+                String tensanpham = tbSanPham.Rows[0]["TENSANPHAM"].ToString();
+                double dongia = Double.Parse(tbSanPham.Rows[0]["DONGIA"].ToString());
+                String hinhanh = tbSanPham.Rows[0]["HINHANH"].ToString();
+                int soluong = Int16.Parse(DrlSOLUONG.SelectedItem.Text);
+                if (Session["CART"] != null)
+                    cart = (App_code.Cart)Session["CART"];
+                cart.AddCart(masanpham, tensanpham, hinhanh, soluong, dongia);
+                Session["CART"] = cart;
+                Response.Redirect("GioHang.aspx");
             }
         }
     }

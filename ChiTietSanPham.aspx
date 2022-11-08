@@ -11,5 +11,5 @@
         </ItemTemplate>
     </asp:Repeater>
     <asp:DropDownList ID="DrlSOLUONG" runat="server"></asp:DropDownList>
-    <asp:Button ID="btn_GIOHANG" runat="server" Text="Giỏ hàng" />
+    <asp:Button ID="btn_GIOHANG" runat="server" Text="Giỏ hàng" OnClick="btnGiohang_Click" />
 </asp:Content>

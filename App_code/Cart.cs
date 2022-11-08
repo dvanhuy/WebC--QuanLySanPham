@@ -35,7 +35,7 @@ namespace QuanLySanPhamTHTKW.App_code
         {
             double total=0;
             foreach (Item item in listcarts.Values)
-                total += item.Dongia;
+                total += item.ThanhTien;
             return total;
         }
     }
